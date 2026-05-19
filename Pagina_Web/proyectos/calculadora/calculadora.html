@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+
+    <style>
+        *{box-sizing: border-box;}
+
+        body{
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            background: #0c1c42;
+            color: rgb(255, 255, 255);
+        }
+
+        .card{
+            
+            padding: 1rem;
+            background: #010153;
+            border-radius: 1rem;
+            margin: 0 auto;
+            max-width: 600px;
+            min-width: 300px;
+            box-shadow:0 14px 15px rgba(0,0,0,0.45);
+        }
+        .salida{
+            border-radius: 1rem;
+            height: 5rem;
+            padding: 1rem;
+            background: #cacde2;
+            color: #010153;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            text-align: right;
+            font-size: 1.5rem;
+        }
+
+        .input-data{
+
+            width: auto;
+            border: none;
+            width: 100%;
+            background: #01015300;
+            text-align: right;
+            font-size: 1.5rem;
+            color: #010153;
+
+        }
+
+        .input-operando{
+            border: none;
+            background: #01015300;
+        }
+
+        .operaciones{
+            display: flex;
+            flex-direction: row;
+            align-items:center;
+            justify-content: end;
+
+            
+        }
+        .operaciones strong{
+            color: rgb(255, 255, 255);
+            font-size: 1rem;
+            background: #010153;
+            padding-left: 5px;
+            padding-right: 5px;
+            border-radius: 50%;
+        }
+        .teclas{
+            
+            margin: 1rem;
+            display: flex;
+            flex-direction:column;
+        }
+
+        .teclas section{
+            display: flex;
+            flex-wrap: wrap;
+            
+
+        }
+        button{
+            flex-grow: 1;
+            flex-basis: 20%;
+            margin: 5px;
+            border: none;
+            border-radius: 1rem;
+            background: #cacde2;
+            padding: 1rem;
+            transition: all 200ms;
+            color: #1b267a;
+            box-shadow:0 4px 5px rgba(0,0,0,0.45);
+        }
+
+        button:hover{
+            background: #ffffff;
+            border: 1px solid #00ccff
+            
+        }
+
+        .btn-special{
+            background: #56e831;
+        }
+
+        .btn-special:hover{
+            background: #25b002;
+        }
+
+        
+
+
+
+
+
+    </style>
+</head>
+<body>
+
+    <h1>Calculadora</h1>
+
+    <section class="card">
+
+
+        <div class="salida">
+
+            <div class="operaciones">
+            <input class="input-operando"  id="operando" type="text" disabled placeholder="0">
+                <strong id="signal"></strong>
+            </div>
+
+        <input  id="salida" class="input-data" placeholder="0" type="text" disabled/>
+
+        </div>
+        
+
+        <div class="teclas">
+            <section>
+                <button class="btn-special" id="bc">C</button>
+                <button id="bDiv">/</button>
+                <button id="bDel">Delete</button>
+            </section>
+                        <section>
+                <button id="b7">7</button>
+                <button id="b8">8</button>
+                <button id="b9">9</button>
+                <button id="bPor">x</button>
+            </section>
+                        <section>
+                <button id="b4">4</button>
+                <button id="b5">5</button>
+                <button id="b6">6</button>
+                <button id="bMenos">-</button>
+            </section>
+                        <section>
+                <button id="b1" >1</button>
+                <button id="b2">2</button>
+                <button id="b3">3</button>
+                <button id="bMas">+</button>
+            </section>
+            <section>
+                <button id="b0">0</button>
+                <button id="bPoint">.</button>
+                <button class="btn-special" id="bIgual">=</button>
+            </section>
+        </div>
+
+    </section>
+    
+</body>
+
+
+<script>
+
+    //alert("This is a calculator for the web suject");
+
+    //declarar variables para valores de la calculadora
+
+
+    const b1= document.getElementById("b1");
+    const b2= document.getElementById("b2");
+    const b3= document.getElementById("b3");
+    const b4= document.getElementById("b4");
+    const b5= document.getElementById("b5");
+    const b6= document.getElementById("b6");
+    const b7= document.getElementById("b7");
+    const b8= document.getElementById("b8");
+    const b9= document.getElementById("b9");
+    const b0= document.getElementById("b0");
+
+    const bDiv= document.getElementById("bDiv");
+    const bPoint= document.getElementById("bPoint");
+    const bMenos= document.getElementById("bMenos");
+    const bMas= document.getElementById("bMas");
+    const bIgual= document.getElementById("bIgual");
+    const bc=document.getElementById("bc");
+    const bDel= document.getElementById("bDel");
+    const bPor= document.getElementById("bPor");
+
+    const gOut= document.getElementById("salida")
+    const gOperando=document.getElementById("operando");
+    const gSignal= document.getElementById("signal");
+
+    const getData=(e)=>{
+
+       // alert("in b1");
+       gOut.value=(gOut.value)+e;
+
+    }
+
+    const isPoint=(e)=>{
+       
+        for(let i=0;i<e.value.length;i++)
+            
+            if(e.value.charAt(i)===".") return true
+            return false;
+    }
+
+
+
+    const isSignal=(signal,operador,operando)=>{
+
+        if(operador==="") return operando;
+       
+        switch(signal){
+
+            case "+":
+                
+                return Number(operador) + Number(operando);
+                break;
+
+            case "-":
+                return Number(operador) - Number(operando);
+                break;
+
+            case "x":
+                return Number(operador) * Number(operando);
+                break
+
+            case "/":
+                    if(operador!=="0"){
+                        //console.log(Number(operador)/Number(operando));
+
+                      return  Number(operador) / Number(operando);}
+                    else {
+                        alert("No se puede dividir entre 0");
+                        return Number(operando);
+                    }
+                break;
+        }
+
+    }
+
+
+    const addSignal=(n)=>{
+        
+        if(gOut.value.length!==0
+        &&gOut.value.charAt(gOut.value.length-1)!=='.'){
+
+            
+
+            gSignal.textContent=n;
+            //gOperando.value=(gOut.value);
+            gOut.value="";
+
+
+
+
+        }
+    }
+
+
+
+
+
+    //declaracion de accion de botones
+
+
+    b1.addEventListener("click",()=>{
+       getData("1");
+    })
+
+    b2.addEventListener("click",()=>{
+        getData("2");
+    })
+
+    b3.addEventListener("click",()=>{
+        getData("3");
+    });
+
+    b4.addEventListener("click",()=>{
+        getData("4");
+    });
+
+    b5.addEventListener("click",()=>{
+        getData("5");
+    });
+
+    b6.addEventListener("click",()=>{
+        getData("6");
+    });
+
+    b7.addEventListener("click",()=>{
+        getData("7");
+    });
+
+    b8.addEventListener("click",()=>{
+        getData("8");
+    });
+
+    b9.addEventListener("click",()=>{
+        getData("9");
+    });
+
+    b0.addEventListener("click",()=>{
+      
+       if(gOut.value.length>0||isPoint(gOut)) getData("0");
+    });
+
+    bPoint.addEventListener("click",()=>{
+        
+        if((!isPoint(gOut))) getData(".")
+        else console.log("yes point");
+      
+    });
+
+//signos en valores
+
+    bMas.addEventListener("click",()=>{
+        let n="+";
+        
+        gOperando.value= isSignal(n,gOperando.value,gOut.value);
+        
+        addSignal(n)
+
+    })
+
+    bMenos.addEventListener("click",()=>{
+        let n="-";
+        gOperando.value= isSignal(n,gOperando.value,gOut.value);
+        addSignal(n);
+    })
+
+    bDiv.addEventListener("click",()=>{
+        let n="/";
+        gOperando.value= isSignal(n,gOperando.value,gOut.value);
+        addSignal(n);
+    })
+
+    bPor.addEventListener("click",()=>{
+        let n="x";
+        gOperando.value= isSignal(n,gOperando.value,gOut.value);
+        addSignal(n)
+    })
+
+
+
+
+
+    bDel.addEventListener("click",()=>{
+        let beforeText="";
+
+        for(let i=0;i<gOut.value.length-1;i++)
+            beforeText+=gOut.value.charAt(i);
+
+
+
+            if(gOut.value==="") {
+                gSignal.textContent=""; 
+                gOut.value=gOperando.value;
+                gOperando.value="";
+            
+
+
+            }
+            else
+            gOut.value=beforeText;
+    })
+
+    bc.addEventListener("click", ()=>{
+        gOut.value="";
+        gOperando.value="";
+        gSignal.textContent="";
+    });
+
+
+
+    //igualdad en valores
+
+    bIgual.addEventListener("click", ()=>{
+
+        gOut.value=isSignal(gSignal.textContent,gOperando.value,gOut.value)
+
+        gSignal.textContent="";
+        gOperando.value="";
+
+    });
+
+
+
+
+</script>
+</html>

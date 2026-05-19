@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    *{ box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: #0f172a;
+      color: #e5e7eb;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 1rem 1rem;
+    }
+
+    header h1 {
+      margin: 0 0 0.4rem;
+    }
+
+    header p {
+      margin: 0;
+      color: #9ca3af;
+      font-size: 0.95rem;
+    }
+
+    .pricing{
+        max-width: 1000px;
+        margin: 2rem auto 3rem;
+        padding: 0 1rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit
+        minmax(230px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .plan{
+        background: #020617;
+        border-radius: 14px;
+        padding: 1.5rem 1.25rem;
+        border: 1px solid #1f2937;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        position: relative;
+    }
+
+    .plan.highlight {
+        border-color: #38bdf8;
+        box-shadow: 0 0 0 1px #38bdf8;
+        transform: translateY(-4px);
+    }
+
+    .badge{
+        position: absolute;
+        top: -0.7rem;
+        right: 1.25rem;
+        background: #38bdf8;
+        color: #0f172a;
+        padding: 0.1rem 0.6rem;
+        border-radius: 999px;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06rem;
+    }
+
+
+    .plan h2 {
+      margin: 0;
+      font-size: 1.1rem;
+    }
+
+    .price {
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+
+    .price span {
+      font-size: 0.9rem;
+      color: #9ca3af;
+      font-weight: 400;
+    }
+
+    .summary {
+      font-size: 0.9rem;
+      color: #9ca3af;
+    }
+
+    ul.features {
+      list-style: none;
+      padding: 0;
+      margin: 0.25rem 0 0.75rem;
+      font-size: 0.85rem;
+      color: #d1d5db;
+    }
+
+    ul.features li {
+      margin-bottom: 0.35rem;
+    }
+
+    ul.features li::before {
+      content: "✔";
+      color: #22c55e;
+      margin-right: 0.35rem;
+      font-size: 0.8rem;
+    }
+
+
+    .btn{
+        margin-top: auto;
+        padding: 0.5rem 0.75rem;
+        border-radius: 999px;
+        border: none;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: transform 0.05s ease, box-shadow
+        0.1s ease, background 0.15s ease;
+    }
+
+    .btn-primary {
+      background: #38bdf8;
+      color: #0f172a;
+      box-shadow: 0 8px 18px rgba(56,189,248,0.3);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: #e5e7eb;
+      border: 1px solid #4b5563;
+    }
+
+
+    .btn:hover{
+        transform: translateY(-1px);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+
+    }
+
+    .btn:active{
+        transform: translateY(0);
+        box-shadow: none;
+    }
+
+    footer{
+        text-align: center;
+    }
+
+</style>
+<body>
+
+    <header>
+        <h1>Planes y precios</h1>
+        <p>Practica la maquetacion de tarjetas comparando distintos planes.</p>
+
+    </header>
+
+    <main class="pricing">
+
+        <article class="plan highlight">
+            <span class="badge">Recomendado</span>
+            <h2>Basico</h2>
+            <p class="price">$9
+                <span>/mes</span>
+            </p>
+        <p class="summary">Ideal para proyectos personales y pruebas</p>
+        <ul class="features">
+            <li>1 sitio web</li>
+            <li>5GB de almacenamiento</li>
+            <li>soporte por correo</li>
+        </ul>
+        <button class="btn btn-inline">Elegir Plan</button>
+
+        
+
+        </article>
+
+
+                <article class="plan highlight">
+                    <span class="badge">Recomendado</span>
+            <h2>Basico</h2>
+            <p class="price">$9
+                <span>/mes</span>
+            </p>
+        <p class="summary">Ideal para proyectos personales y pruebas</p>
+        <ul class="features">
+            <li>1 sitio web</li>
+            <li>5GB de almacenamiento</li>
+            <li>soporte por correo</li>
+        </ul>
+        <button class="btn btn-inline">Elegir Plan</button>
+
+        
+
+        </article>
+
+
+                <article class="plan highlight">
+                    <span class="badge">Recomendado</span>
+            <h2>Basico</h2>
+            <p class="price">$9
+                <span>/mes</span>
+            </p>
+        <p class="summary">Ideal para proyectos personales y pruebas</p>
+        <ul class="features">
+            <li>1 sitio web</li>
+            <li>5GB de almacenamiento</li>
+            <li>soporte por correo</li>
+        </ul>
+        <button class="btn btn-outline">Elegir Plan</button>
+
+        
+
+        </article>
+
+    </main>
+
+    <footer>
+        <p>Actividad de practicas HTML + CSS:
+        tablas de precios y layout con grid
+        </p>
+    </footer>
+    
+</body>
+
+
+
+</html>
